@@ -17,4 +17,18 @@ internal class TermevaluatorTest {
         val expectedResult = listOf(12, 345)
         JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseIntsFromTerm("12 + 345"))
     }
+
+    @Test
+    fun testParseMultipleDigitsNumbersWithThreeNumbers() {
+        val termEv = Termevaluator()
+        val expectedResult = listOf(12, 345, 678)
+        JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseIntsFromTerm("12 + 345 + 678"))
+    }
+
+    @Test
+    fun testParseMultipleDigitsNumbersWithChars() {
+        val termEv = Termevaluator()
+        val expectedResult = listOf(345, 678)
+        JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseIntsFromTerm("12a + 345 + 678"))
+    }
 }
