@@ -22,6 +22,23 @@ class Termevaluator {
         return numbersOfTerm
     }
 
+    fun parseOperatorsFromTerm(termToPars: String): List<Operations> {
+        val operationsofTerm = ArrayList<Operations>()
+
+        for (c in termToPars) {
+            if (c == '+') {
+                operationsofTerm.add(Operations.Addition)
+            } else if (c == '-') {
+                operationsofTerm.add(Operations.Subtraction)
+            } else if (c == '*') {
+                operationsofTerm.add(Operations.Multiplication)
+            } else if (c == '/' || c == ':') {
+                operationsofTerm.add(Operations.Division)
+            }
+        }
+        return operationsofTerm
+    }
+
     private fun isInt(unparsedString: String?): Boolean {
         return try {
             Integer.parseInt(unparsedString)

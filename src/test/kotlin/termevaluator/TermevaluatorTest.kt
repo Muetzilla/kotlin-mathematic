@@ -31,4 +31,30 @@ internal class TermevaluatorTest {
         val expectedResult = listOf(345, 678)
         JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseIntsFromTerm("12a + 345 + 678"))
     }
+
+    @Test
+    fun testParseOperationsFromTermSingleOperation() {
+        val termEv = Termevaluator()
+        val expectedResult = listOf(Operations.Addition)
+        JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseOperatorsFromTerm("12 + 345"))
+    }
+
+    @Test
+    fun testParseOperationsFromTermMultipleDifferentOperations() {
+        val termEv = Termevaluator()
+        val expectedResult =
+            listOf(Operations.Addition, Operations.Subtraction, Operations.Multiplication, Operations.Division)
+        JUnitAsserter.assertEquals(
+            "Test failed",
+            expectedResult,
+            termEv.parseOperatorsFromTerm("12 + 345 - 678 * 9 / 10")
+        )
+    }
+
+    @Test
+    fun testParseOperationsFromTermDifferentDivisonChars() {
+        val termEv = Termevaluator()
+        val expectedResult = listOf(Operations.Division, Operations.Division)
+        JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseOperatorsFromTerm("12 : 345 / 678"))
+    }
 }
