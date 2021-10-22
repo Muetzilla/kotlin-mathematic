@@ -57,4 +57,68 @@ internal class TermevaluatorTest {
         val expectedResult = listOf(Operations.Division, Operations.Division)
         JUnitAsserter.assertEquals("Test failed", expectedResult, termEv.parseOperatorsFromTerm("12 : 345 / 678"))
     }
+
+    @Test
+    fun testTermIsCorrectNoInts() {
+        val termEv = Termevaluator()
+        val intsOfTerm = ArrayList<Int>()
+        val operationsOfTerm = ArrayList<Operations>()
+        JUnitAsserter.assertEquals("Test failed", false, termEv.checkCorrectTerm(intsOfTerm, operationsOfTerm))
+    }
+
+    @Test
+    fun testTermIsCorrectCorrectTerm() {
+        val termEv = Termevaluator()
+        val intsOfTerm = ArrayList<Int>()
+        intsOfTerm.addAll(listOf(5, 6))
+        val operationsOfTerm = ArrayList<Operations>()
+        operationsOfTerm.add(Operations.Addition)
+        JUnitAsserter.assertEquals(
+            "Test failed",
+            true,
+            termEv.checkCorrectTerm(intsOfTerm, operationsOfTerm)
+        )
+    }
+
+    @Test
+    fun testTermIsCorrectOnlyOneInts() {
+        val termEv = Termevaluator()
+        val intsOfTerm = ArrayList<Int>()
+        intsOfTerm.addAll(listOf(5))
+        val operationsOfTerm = ArrayList<Operations>()
+        JUnitAsserter.assertEquals(
+            "Test failed",
+            true,
+            termEv.checkCorrectTerm(intsOfTerm, operationsOfTerm)
+        )
+    }
+
+    @Test
+    fun testTermIsCorrectOnlyMoreIntsThenOperations() {
+        val termEv = Termevaluator()
+        val intsOfTerm = ArrayList<Int>()
+        intsOfTerm.addAll(listOf(5, 6, 8))
+        val operationsOfTerm = ArrayList<Operations>()
+        operationsOfTerm.add(Operations.Addition)
+        JUnitAsserter.assertEquals(
+            "Test failed",
+            false,
+            termEv.checkCorrectTerm(intsOfTerm, operationsOfTerm)
+        )
+    }
+
+    @Test
+    fun testTermIsCorrectOnlyMoreOperationsThenints() {
+        val termEv = Termevaluator()
+        val intsOfTerm = ArrayList<Int>()
+        intsOfTerm.add(5)
+        val operationsOfTerm = ArrayList<Operations>()
+        operationsOfTerm.addAll(listOf(Operations.Addition, Operations.Addition))
+        JUnitAsserter.assertEquals(
+            "Test failed",
+            false,
+            termEv.checkCorrectTerm(intsOfTerm, operationsOfTerm)
+        )
+    }
+
 }

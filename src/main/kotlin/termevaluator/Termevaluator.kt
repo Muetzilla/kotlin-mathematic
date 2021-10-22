@@ -26,19 +26,26 @@ class Termevaluator {
         val operationsofTerm = ArrayList<Operations>()
 
         for (c in termToPars) {
-            
-            //Update to when
-            if (c == '+') {
-                operationsofTerm.add(Operations.Addition)
-            } else if (c == '-') {
-                operationsofTerm.add(Operations.Subtraction)
-            } else if (c == '*') {
-                operationsofTerm.add(Operations.Multiplication)
-            } else if (c == '/' || c == ':') {
-                operationsofTerm.add(Operations.Division)
+            when (c) {
+                '+' -> {
+                    operationsofTerm.add(Operations.Addition)
+                }
+                '-' -> {
+                    operationsofTerm.add(Operations.Subtraction)
+                }
+                '*' -> {
+                    operationsofTerm.add(Operations.Multiplication)
+                }
+                '/', ':' -> {
+                    operationsofTerm.add(Operations.Division)
+                }
             }
         }
         return operationsofTerm
+    }
+
+    fun checkCorrectTerm(listOfNumbers: ArrayList<Int>, listOfOperators: ArrayList<Operations>): Boolean {
+        return listOfNumbers.size >= 1 && listOfNumbers.size == listOfOperators.size + 1
     }
 
     private fun isInt(unparsedString: String?): Boolean {
