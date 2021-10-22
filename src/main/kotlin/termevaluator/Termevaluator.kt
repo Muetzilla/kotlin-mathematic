@@ -26,6 +26,8 @@ class Termevaluator {
         val operationsofTerm = ArrayList<Operations>()
 
         for (c in termToPars) {
+            
+            //Update to when
             if (c == '+') {
                 operationsofTerm.add(Operations.Addition)
             } else if (c == '-') {
