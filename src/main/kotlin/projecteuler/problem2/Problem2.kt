@@ -6,15 +6,19 @@ package projecteuler.problem2
  * By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
  */
 fun main(args: Array<String>) {
-    var result = 0L
-    val fibonacciNumbers = mutableListOf(0, 1)
-    for (i in 2 until 4000000) {
-        fibonacciNumbers.add(fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2])
-    }
-    for (fibNo in fibonacciNumbers) {
-        if (fibNo % 2 == 0) {
-            result += fibNo
+    var n1 = 1
+    var n2 = 2
+    var result = 0
+
+    while (n1 <= 4000000) {
+        var tempN1: Int
+        if (n1 % 2 == 0) {
+            result += n1
         }
+        tempN1 = n1
+        n1 = n2
+        n2 += tempN1
     }
+
     print("The sum of all even fibonacci-terms is $result")
 }
