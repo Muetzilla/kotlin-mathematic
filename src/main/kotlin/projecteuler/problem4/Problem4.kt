@@ -6,17 +6,15 @@ package projecteuler.problem4
  */
 
 fun main(args: Array<String>) {
-    var largest3DigitPalindrome = 0;
+    var largest3DigitPalindrome = ArrayList<Int>()
     for (i in 100 until 999) {
         for (j in 100 until 999) {
             if (isPalidrome(i * j)) {
-                largest3DigitPalindrome = i * j
-            } else {
-                println("THE RESULT FOR i is $i and j is $j IS: " + i * j)
+                largest3DigitPalindrome.add(i * j)
             }
         }
     }
-    print("The largest 3 digit palidrome is $largest3DigitPalindrome")
+    print("The largest 3 digit palidrome is: " + largest3DigitPalindrome.maxOrNull())
 }
 
 fun isPalidrome(number: Int): Boolean {
