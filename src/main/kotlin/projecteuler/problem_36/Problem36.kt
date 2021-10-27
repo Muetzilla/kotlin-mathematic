@@ -1,4 +1,4 @@
-package projecteuler.problem36
+package projecteuler.problem_36
 
 /**
  * The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
