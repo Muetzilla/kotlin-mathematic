@@ -16,14 +16,17 @@ import kotlin.math.pow
 fun main(args: Array<String>) {
     var result = 0
     var counter = 0
+    val POTENCE = 5
     for (i in 0..9) {
         for (j in 0..9) {
             for (k in 0..9) {
                 for (l in 0..9) {
                     for (m in 0..9) {
                         for (n in 0..9) {
-                            if (counter.toDouble() == (i.toDouble().pow(5.0) + j.toDouble().pow(5.0) + k.toDouble()
-                                    .pow(5.0) + l.toDouble().pow(5.0) + m.toDouble().pow(5.0) + n.toDouble().pow(5.0))
+                            if (counter.toDouble() == (i.toDouble().pow(POTENCE) + j.toDouble()
+                                    .pow(POTENCE) + k.toDouble()
+                                    .pow(POTENCE) + l.toDouble().pow(POTENCE) + m.toDouble().pow(POTENCE) + n.toDouble()
+                                    .pow(POTENCE))
                             ) {
                                 result += counter
                             }
