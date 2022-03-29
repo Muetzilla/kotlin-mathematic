@@ -10,6 +10,15 @@ package projecteuler.problem_9
 
 fun main(args: Array<String>) {
     val gesRes = 1000
-    
+
+    for(a in 1 .. gesRes){
+        for(b in 1 ..gesRes){
+            for (c in 1 .. gesRes){
+                if(a * a +b * b == c * c && a + b + c == 1000){
+                    println("The product of a, b and c is: " + (a * b * c))
+                }
+            }
+        }
+    }
 
 }
