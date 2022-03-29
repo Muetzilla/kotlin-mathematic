@@ -5,20 +5,35 @@ package projecteuler.problem_10
  * Find the sum of all the primes below two million.
  */
 fun main(args: Array<String>) {
-    var prim = 2_000_000
-    var result = 0
-    var isNonPrime = false
-    for (i in 2..2_000_000) {
-        for (j in 2..i / 2) {
-            if (i % j == 0) {
-                isNonPrime = true
-            }
-        }
-        if (!isNonPrime) {
+    val max = 2_000_000
+    var result = 0L
+    for (i in 0..max) {
+        if(isPrime(i)){
             result += i
-            println("$i is a prime")
         }
-        isNonPrime = false
     }
     print("The sum of all the primes below two million is: $result")
+}
+
+private fun isPrime(num: Int): Boolean {
+    //Check special cases
+    if (num == 2) {
+        return true
+    }
+    if (num % 2 == 0) {
+        return false
+    }
+    if (num <= 1) {
+        return false
+    }
+
+    val root = Math.sqrt(num.toDouble()).toInt()
+    var isPrime = true
+    for (i in 3..root step 2) {
+        if ((num % i) == 0) {
+            isPrime = false
+            break
+        }
+    }
+    return isPrime
 }
