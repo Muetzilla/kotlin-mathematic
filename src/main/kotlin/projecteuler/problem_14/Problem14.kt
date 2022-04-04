@@ -17,13 +17,13 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
  */
 
 fun main(args: Array<String>) {
-    var longestSequenceForNumber = 1
+    var longestSequenceForNumber = 0
     var longestSequenceForNumberLength = 0
-    for (i in 1..1_000_000) {
-        var sequenceLength = 0
-        var tempNum = i
-        while (tempNum > 1) {
-            if (tempNum % 2 == 0) {
+    for (i in 2..1_000_000) {
+        var sequenceLength = 1
+        var tempNum: Long = i.toLong()
+        while (tempNum != 1L) {
+            if ((tempNum % 2) == 0L) {
                 tempNum /= 2
             } else {
                 tempNum = tempNum * 3 + 1
